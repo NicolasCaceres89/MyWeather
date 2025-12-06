@@ -12,13 +12,13 @@ class Preferences extends Model
     protected $primaryKey = 'id';
     
     //This attributes of the preference model are mass assignable...
-    protected $attributes = [
+    protected $fillable = [
         'temperature_unit' => GradeUnitType::Farenheight->value,
         'time_format' => TimeFormatType::TwelveHours->value,
     ];
     
     //Relation to the User model (one-to-one)...
     public function user () {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

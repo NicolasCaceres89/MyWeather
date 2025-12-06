@@ -14,7 +14,9 @@ return new class extends Migration
         //Creation of locations DB table...
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('cityName');
+            $table->string('cityName')->nullable(); //City name from API
+            $table->string('name')->nullable(); //Alternative name for the location
+            $table->string('country')->nullable(); //Country of the location
             
             //Coordenates of the location...
             $table->double('latitude');

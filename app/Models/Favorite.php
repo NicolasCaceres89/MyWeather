@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Favorite extends Model
 {
+    //Specify the table name for this model
+    protected $table = 'favorite_locations';
+
     //Specific primary key for the favorite model...
-    protected $primaryKey = 'favorite_id';
+    protected $primaryKey = 'id';
 
     //This attributes of the favorite model are mass assignable...
     protected $fillable = [

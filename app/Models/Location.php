@@ -14,10 +14,17 @@ class Location extends Model
         'cityName',
         'latitude',
         'longitude',
+        'name',
+        'country',
     ];
 
     //Relation to the Favorite model (one-to-many)...
     public function favorites() {
         return $this->hasMany(Favorite::class, 'location_id', 'id');
+    }
+
+    //Relation to the Consult model (one-to-many)...
+    public function consults() {
+        return $this->hasMany(Consult::class, 'location_id', 'id');
     }
 }

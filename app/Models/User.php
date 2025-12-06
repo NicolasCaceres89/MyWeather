@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enums\UserTypes;
 use App\Models\Preferences;
 use App\Models\Favorite;
 use App\Models\Consult;
@@ -44,8 +46,10 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+            'user_type' => UserTypes::class,
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'active' => 'boolean',
         ];
     }
 
@@ -57,5 +61,9 @@ class User extends Authenticatable
     //Relation to the Favorite model (one-to-many)...
     public function favorites() {
         return $this->hasMany(Favorite::class);
+    }
+
+    public function consults() {
+        return $this->hasMany(Consult::class);
     }
 }
